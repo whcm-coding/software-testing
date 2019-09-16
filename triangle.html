@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  function onClick() {
+    var side1 = parseInt(document.getElementById('side1').value)
+    var side2 = parseInt(document.getElementById('side2').value)
+    var side3 = parseInt(document.getElementById('side3').value)
+
+    if (side1 >= (side2 + side3) ||
+      side2 >= (side1 + side3) ||
+      side3 >= (side1 + side2)
+    ) {
+      document.getElementById('result').innerText = '抱歉，您输入的不是有效的三角形'
+      return
+    }
+
+    if (side1 === side2 && side2 === side3) {
+      document.getElementById('result').innerText = '等边三角形'
+    } else {
+      if (side1 === side2 || side2 === side3 || side1 === side2) {
+        document.getElementById('result').innerText = '等腰三角形'
+      } else {
+        document.getElementById('result').innerText = '不规则三角形'
+      }
+    }
+  }
+</script>
+
+<body>
+  <div>
+    <label>第一条边</label>
+    <input id="side1" type="number" />
+
+    <label>第二条边</label>
+    <input id="side2" type="number" />
+
+    <label>第三条边</label>
+    <input id="side3" type="number" />
+
+    <button onclick="onClick()">提交</button>
+
+    <div>结果：</div>
+    <div id="result"></div>
+  </div>
+</body>
+
+</html>
